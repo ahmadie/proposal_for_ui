@@ -29,49 +29,20 @@ This proposal outlines a solution to integrate Python-based trading strategies w
   - Incorporate decorators for basic indicators like EMA into the strategy SDK.
   - Enable chart triggering with simple flags in the code.
 
-
-
 ---
 
-## 2. Advanced Charts
-
-### Advanced Decorators
-
-- **Dynamic Channel Creation**:
-  - Allow creation of new Redis channels on-the-fly.
-  - Publish data to these channels.
-- **JavaScript Subscription**:
-  - Modify JavaScript code to subscribe to new variables (similar to existing GitHub Python wrappers).
-
-### Enhancements Needed
-
-- **Control Over API Calls**:
-  - Gain finer control over front-end API calls.
-- **Hot-Reloading/File Watching**:
-  - Implement continuous hot-reloading to reflect real-time changes.
-
-### Implementation Steps
-
-1. **Node.js Server with Hot-Reloading**:
-   - Develop a Node.js server that subscribes to Redis channels with hot-reloading enabled.
-2. **GraphQL Backend Service**:
-   - Implement a GraphQL server that interfaces with Redis.
-
-### Potential Issues
-
-- **Complexity and Risks**:
-  - Modifying JavaScript code from Python and triggering hot-reloads can be complex and risky.
-- **Proposed Solution**:
-  - Instead of Python modifying JavaScript code, design the front end to handle dynamic data updates without code modifications.
-
----
-
-## 3. Complex Charting Features
+## 2. Complex Charting Features
 
 ### Customized Data Handling
 
 - **Manual Publishing and Subscribing**:
   - Strategy developers manage data publishing in Python and subscribing in JavaScript for advanced features.
+  - Define those as plugins or imports inside javascript, and python decoration will enable or disable them, with minimal code changes
+
+### Implementation Steps
+
+- **Node.js Server with Hot-Reloading**: Develop a Node.js server that subscribes to Redis channels with hot-reloading enabled.
+- **Hot-Reloading/File Watching**: Implement continuous hot-reloading to reflect real-time changes.
 
 ---
 
